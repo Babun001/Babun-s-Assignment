@@ -49,19 +49,19 @@ const tabsData = {
         ],
         image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/one-mg%20(1).webp",
     },
-    check:{
-        title:"CHECK DATA",
-        tabIcon: "https://logomoose.com/wp-content/uploads/2016/01/18.jpg",
-        description:"This data is for testing purpose only",
-        amenities:[
-            { name: "Skydeck - 320ft above the ground level", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/twin-towers.png" },
-            { name: "Barbeque Zone", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/barbeque.png" }, // Fixed incorrect extension
-            { name: "Outdoor Gym", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/dumbbell.png" },
-            { name: "Telescope Deck", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/telescope.png" },
+    // check:{
+    //     title:"CHECK DATA",
+    //     tabIcon: "https://logomoose.com/wp-content/uploads/2016/01/18.jpg",
+    //     description:"This data is for testing purpose only",
+    //     amenities:[
+    //         { name: "Skydeck - 320ft above the ground level", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/twin-towers.png" },
+    //         { name: "Barbeque Zone", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/barbeque.png" }, // Fixed incorrect extension
+    //         { name: "Outdoor Gym", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/dumbbell.png" },
+    //         { name: "Telescope Deck", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/telescope.png" },
             
-        ],
-        image: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Wikimedia_Brand_Guidelines_Update_2022_Wikimedia_Logo_Brandmark.png",
-    }
+    //     ],
+    //     image: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Wikimedia_Brand_Guidelines_Update_2022_Wikimedia_Logo_Brandmark.png",
+    // }
 };
 
 export default tabsData;
