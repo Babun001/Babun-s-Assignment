@@ -54,7 +54,7 @@
 // -------------------------------------------------------------------dynamic--------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("https://babun-s-assignment-backend.onrender.com/api/tabsdata")
+    fetch("https://your-backend-name.onrender.com/api/tabsdata")
         .then(res => res.json())
         // .then(data => console.log(data))
         .then(data =>{
