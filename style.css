@@ -110,3 +110,22 @@
   align-items: center;
   justify-content: center;
 }
+
+
+/* --------------- */
+
+
+.amenity-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.amenity-text {
+    font-size: 13px;
+    margin-top: 8px;
+    display: block;
+    margin: 0 auto;
+}

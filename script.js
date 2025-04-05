@@ -44,22 +44,22 @@ const tabsData = {
 function loadAmenities(tabId, data) {
     const container = document.getElementById(tabId + "Amenities");
     container.innerHTML = "";
-    
-    let rows = "<table class='table table-bordered text-center'><tbody>";
-    
+
+    let rows = "<table class='table table-bordered text-center w-100'><tbody>";
+
     for (let i = 0; i < 2; i++) {
         rows += "<tr>";
         for (let j = 0; j < 4; j++) {
             let amenity = data.amenitie[i * 4 + j];
             if (amenity) {
                 rows += `
-                    <td>
-                        <img src="${amenity.image}" alt="${amenity.name}" class="amenity-img">
+                    <td class="amenity-cell">
+                        <img src="${amenity.image}" alt="${amenity.name}" class="amenity-img mb-2">
                         <p class="amenity-text">${amenity.name}</p>
                     </td>
                 `;
             } else {
-                rows += `<td></td>`; 
+                rows += `<td class="amenity-cell"></td>`;
             }
         }
         rows += "</tr>";
@@ -68,6 +68,7 @@ function loadAmenities(tabId, data) {
     rows += "</tbody></table>";
     container.innerHTML = rows;
 }
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
