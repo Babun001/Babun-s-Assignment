@@ -3,6 +3,7 @@
 const tabsData = {
     Patio: {
         title: "PATIO (GROUND FLOOR)",
+        tabIcon: "https://cellesta.in/wp-content/themes/cellesta-theme/img/Untitled-1.png-logo-3-01-1024x373.webp",
         description: "Patio is designed for tranquility and leisure with natural landscapes, wellness areas, and various activity zones for all ages.",
         amenities: [
             { name: "Mandir", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/mandir.png" },
@@ -18,6 +19,7 @@ const tabsData = {
     },
     Azura: {
         title: "AZURA",
+        tabIcon: "https://cellesta.in/wp-content/themes/cellesta-theme/img/Untitled-1.png-logo-1-01-1024x451.webp",
         description: "Azura offers a luxurious experience with premium facilities and modern amenities.",
         amenities: [
             { name: "Swimming Pool & Kids Pool", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/swimming-pool1.png" },
@@ -33,6 +35,7 @@ const tabsData = {
     },
     Panorama: {
         title: "PANORAMA",
+        tabIcon: "https://cellesta.in/wp-content/themes/cellesta-theme/img/Untitled-1.png-logo-2-01-1024x456.webp",
         description: "Panorama provides breathtaking views with high-rise living and exclusive services.",
         amenities: [
             { name: "Skydeck - 320ft above the ground level", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/twin-towers.png" },
@@ -46,6 +49,19 @@ const tabsData = {
         ],
         image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/one-mg%20(1).webp",
     },
+    check:{
+        title:"CHECK DATA",
+        tabIcon: "https://logomoose.com/wp-content/uploads/2016/01/18.jpg",
+        description:"This data is for testing purpose only",
+        amenities:[
+            { name: "Skydeck - 320ft above the ground level", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/twin-towers.png" },
+            { name: "Barbeque Zone", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/barbeque.png" }, // Fixed incorrect extension
+            { name: "Outdoor Gym", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/dumbbell.png" },
+            { name: "Telescope Deck", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/telescope.png" },
+            
+        ],
+        image: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Wikimedia_Brand_Guidelines_Update_2022_Wikimedia_Logo_Brandmark.png",
+    }
 };
 
 export default tabsData;

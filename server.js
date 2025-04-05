@@ -13,10 +13,7 @@ import tabsData from './Data.mjs';
 app.get('/api/tabsData',(req,res) =>{
     res
     .status(200)
-    .json({
-        status:"Ok",
-        data:tabsData
-    });
+    .json(tabsData);
 })
 
 app.listen(port,() =>{

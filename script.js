@@ -1,78 +1,165 @@
-const tabsData = {
-    Patio: {
-        amenitie: [
-            { name: "Mandir", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/mandir.png" },
-            { name: "Kids' Play Area", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/playtime.png" },
-            { name: "Jogging Track", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/jogging.png" },
-            { name: "Yoga Deck", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/buddhist-yoga-pose.png" },
-            { name: "Natural Water Body", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/pond.png" },
-            { name: "Elevated Walking Area", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/walking-man.png" },
-            { name: "Adda Zone", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/target.png" },
-            { name: "Fishing Deck", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/fishing.png" }
-        ],
 
-    },
-    Azura: {
-        amenitie: [
-            { name: "Swimming Pool & Kids Pool", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/swimming-pool1.png" },
-            { name: "AC Community Hall with Party Lawn", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/hall1.png" },
-            { name: "Indoor Games Room", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/console.png" },
-            { name: "Badminton Court", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/tennis-racket.png" },
-            { name: "Theatre Room", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/audience.png" },
-            { name: "Landscaped Deck Zone with Cabana", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/beach-cabana.png" },
-            { name: "Yoga & Zumba Room", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/buddhist-yoga-pose.png" },
-            { name: "Library & Cards Room", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/open-book.png" }
-        ]
-    },
-    Panorama: {
-        amenitie: [
-            { name: "Skydeck - 320ft above the ground level", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/twin-towers.png" },
-            { name: "Barbeque Zone", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/barbeque.png" }, // Fixed incorrect extension
-            { name: "Outdoor Gym", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/dumbbell.png" },
-            { name: "Telescope Deck", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/telescope.png" },
-            { name: "Elders' Adda Zone", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/couple.png" },
-            { name: "Star Gazing Area", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/moon-gazing.png" },
-            { name: "Open Lounge", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/lounge.png" },
-            { name: "Foot Reflexology Walk", image: "https://cellesta.in/wp-content/themes/cellesta-theme/img/reflexology.png" }
-        ]
-    }
+
+// function loadAmenities(tabId, data) {
+//     const container = document.getElementById(tabId + "Amenities");
+//     container.innerHTML = "";
+
+//     let rows = "<table class='table table-bordered text-center w-100'><tbody>";
+
+//     for (let i = 0; i < 2; i++) {
+//         rows += "<tr>";
+//         for (let j = 0; j < 4; j++) {
+//             let amenity = data.amenitie[i * 4 + j];
+//             if (amenity) {
+//                 rows += `
+//                     <td class="amenity-cell">
+//                         <img src="${amenity.image}" alt="${amenity.name}" class="amenity-img mb-2">
+//                         <p class="amenity-text">${amenity.name}</p>
+//                     </td>
+//                 `;
+//             } else {
+//                 rows += `<td class="amenity-cell"></td>`;
+//             }
+//         }
+//         rows += "</tr>";
+//     }
+
+//     rows += "</tbody></table>";
+//     container.innerHTML = rows;
+// }
+
+
+
+// // document.addEventListener("DOMContentLoaded", ()=>{
+// //     fetch("http://127.0.1.2:6006/api/tabsdata")
+// //         .then(res => res.json())
+// //         .then(data =>{
+// //             console.log(data);
+
+// //         })
+// //         .then(data => {
+// //             for (let tabKey in data) {
+// //                 loadAmenities(tabKey, data[tabKey]);
+// //             }
+// //         })
+// //         .catch(err => console.error("Error fetching amenities:", err));
+// // })
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     loadAmenities("patio", tabsData.Patio);
+//     loadAmenities("azura", tabsData.Azura);
+//     loadAmenities("panorama", tabsData.Panorama);
+// });
+
+// -------------------------------------------------------------------dynamic--------------------------------------
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("http://127.0.1.2:6006/api/tabsdata")
+        .then(res => res.json())
+        // .then(data => console.log(data))
+        .then(data =>{
+            Tabs(data);
+            // console.log(data[azura].description);        
+            console.log("data fetched successfully");
+            
+        })
+        .catch(err => console.error("Error fetching tabs data:", err))
+});
+
+
+function Tabs(data) {
+    const tabManu = document.getElementById("tabMenu");
+    const tabContent = document.querySelector(".tab-content");
+
+    tabManu.innerHTML = "";
+    tabContent.innerHTML = "";
+
+    const tabName = Object.keys(data);
+    tabName.forEach((tabName, index) => {
+        const lowerTabName = tabName.toLowerCase();
+        const activeClass = index === 0 ? "active" : "";
+        const showClass = index === 0 ? "show active" : "";
+
+
+        const tabBtn = document.createElement("li");
+        tabBtn.className = "nav-item";
+        tabBtn.innerHTML = `
+            <a class="nav-link ${activeClass}" data-bs-toggle="tab" href="#${lowerTabName}">
+                <img style="width: 7rem;" src="${data[tabName].tabIcon}" alt="${tabName} icon">
+            </a>
+        `;
+        tabManu.appendChild(tabBtn);
+
+        const tabPane = document.createElement("div");
+        tabPane.className = `tab-pane fade ${showClass}`;
+        tabPane.id = lowerTabName;
+
+        tabPane.innerHTML = `
+            <div class="d-flex flex-column flex-md-row align-items-center">
+                <div class="imageSection">
+                    <img class="tab-image me-5" src="imgAndIcons/img${index + 1}.webp" alt="${tabName}" style="width: 70vh;">
+                </div>
+                <div class="textSection ms-md-4 mt-3 mt-md-0">
+                    <h3>${tabName.toUpperCase()}</h3>
+                    <p>${getTabDescription(tabName,data)}</p>
+                    <div class="row" id="${lowerTabName}Amenities"></div>
+                </div>
+            </div>
+        `;
+        tabContent.appendChild(tabPane);
+
+        loadAmenities(lowerTabName, data[tabName].amenities);
+        
+    })
+}
+
+function getTabDescription(name,data){
+    return data[name].description;
 }
 
 
-// console.log(tabsData);
+// loadAmenities(lowerTabName, data[tabName]);
 
-function loadAmenities(tabId, data) {
+
+function loadAmenities(tabId, amenitiesArray) {
     const container = document.getElementById(tabId + "Amenities");
-    container.innerHTML = "";
+
+    if (!container) {
+        console.error(`Container not found: ${tabId + "Amenities"}`);
+        return;
+    }
+
+    if (!Array.isArray(amenitiesArray)) {
+        console.error("Amenities data is not an array:", amenitiesArray);
+        return;
+    }
 
     let rows = "<table class='table table-bordered text-center w-100'><tbody>";
 
     for (let i = 0; i < 2; i++) {
-        rows += "<tr>";
+        let rowContent = "";
+        let hasAmenity = false;
+
         for (let j = 0; j < 4; j++) {
-            let amenity = data.amenitie[i * 4 + j];
+            let amenity = amenitiesArray[i * 4 + j];
             if (amenity) {
-                rows += `
+                hasAmenity = true;
+                rowContent += `
                     <td class="amenity-cell">
                         <img src="${amenity.image}" alt="${amenity.name}" class="amenity-img mb-2">
                         <p class="amenity-text">${amenity.name}</p>
                     </td>
                 `;
             } else {
-                rows += `<td class="amenity-cell"></td>`;
+                rowContent += `<td class="amenity-cell"></td>`;
             }
         }
-        rows += "</tr>";
+
+        if (hasAmenity) {
+            rows += `<tr>${rowContent}</tr>`;
+        }
     }
 
     rows += "</tbody></table>";
     container.innerHTML = rows;
 }
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadAmenities("patio", tabsData.Patio);
-    loadAmenities("azura", tabsData.Azura);
-    loadAmenities("panorama", tabsData.Panorama);
-});
